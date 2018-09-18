@@ -24,11 +24,25 @@
           "projectView.workspaceView"
         ],
         "title": "View projects in workspace",
-        "category": "Projects"
+        "category": "Projects",
+        "actionItem": {
+          "label": "Projects",
+          "description": "View projects in this workspace"
+        }
       }
     ],
     "menus": {
       "editor/title": [
+        {
+          "action": "projectView.openWorkspaceView"
+        }
+      ],
+      "directory/page": [
+        {
+          "action": "projectView.openWorkspaceView"
+        }
+      ],
+      "commandPalette": [
         {
           "action": "projectView.openWorkspaceView"
         }
@@ -82,6 +96,7 @@
     "husky": "^0.14.3",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
+    "parcel-bundler": "^1.9.7",
     "prettier": "^1.14.2",
     "sourcegraph": "^18.0.0",
     "tslint": "^5.11.0",
