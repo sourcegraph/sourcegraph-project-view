@@ -1,0 +1,90 @@
+{
+  "name": "project-view",
+  "title": "Project view",
+  "description": "View and visualize projects defined in Markdown files in a repository.",
+  "publisher": "sourcegraph",
+  "version": "0.0.0-DEVELOPMENT",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/sourcegraph-project-view.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sourcegraph/sourcegraph-project-view/issues"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "actions": [
+      {
+        "id": "projectView.openWorkspaceView",
+        "command": "openView",
+        "commandArguments": [
+          "projectView.workspaceView"
+        ],
+        "title": "View projects in workspace",
+        "category": "Projects"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "action": "projectView.openWorkspaceView"
+        }
+      ]
+    },
+    "views": {
+      "workspace": [
+        {
+          "id": "projectView.workspaceView"
+        }
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/extension.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register \"src/**/*.test.ts\"",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prettier": "prettier '**/{*.{js?(on),ts?(x),scss},.*.js?(on)}' --write --list-different",
+    "tslint": "tslint -c tslint.json -p tsconfig.json './src/*.ts?(x)' './*.ts?(x)'",
+    "build": "parcel build --experimental-scope-hoisting src/extension.ts",
+    "serve": "parcel serve --no-hmr --no-source-maps src/extension.ts",
+    "watch": "tsc -p . -w",
+    "sourcegraph:prepublish": "npm run build"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts?(x)"
+    ],
+    "exclude": [
+      "**/*.test.ts?(x)"
+    ],
+    "extension": [
+      ".tsx",
+      ".ts"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "@sourcegraph/prettierrc": "^2.2.0",
+    "@sourcegraph/tsconfig": "^3.0.0",
+    "@sourcegraph/tslint-config": "^12.0.0",
+    "husky": "^0.14.3",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.2",
+    "sourcegraph": "^18.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  }
+}
