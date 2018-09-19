@@ -18,40 +18,42 @@
   "contributes": {
     "actions": [
       {
-        "id": "projectView.openWorkspaceView",
-        "command": "openView",
+        "id": "projectView.openPanel",
+        "command": "openPanel",
         "commandArguments": [
-          "projectView.workspaceView"
+          "projectView.panel"
         ],
-        "title": "View projects in workspace",
-        "category": "Projects",
+        "title": "Project chart",
         "actionItem": {
-          "label": "Projects",
-          "description": "View projects in this workspace"
+          "label": "Project chart",
+          "description": "View Gantt chart of projects"
         }
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "action": "projectView.openWorkspaceView"
+          "action": "projectView.openPanel",
+          "when": "resource"
         }
       ],
       "directory/page": [
         {
-          "action": "projectView.openWorkspaceView"
+          "action": "projectView.openPanel",
+          "when": "resource"
         }
       ],
       "commandPalette": [
         {
-          "action": "projectView.openWorkspaceView"
+          "action": "projectView.openPanel",
+          "when": "resource"
         }
       ]
     },
     "views": {
-      "workspace": [
+      "window/panel": [
         {
-          "id": "projectView.workspaceView"
+          "id": "projectView.panel"
         }
       ]
     }
@@ -93,6 +95,7 @@
     "@sourcegraph/prettierrc": "^2.2.0",
     "@sourcegraph/tsconfig": "^3.0.0",
     "@sourcegraph/tslint-config": "^12.0.0",
+    "@types/toposort": "^2.0.1",
     "husky": "^0.14.3",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
@@ -101,5 +104,8 @@
     "sourcegraph": "^18.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "toposort": "^2.0.2"
   }
 }
